@@ -3,22 +3,24 @@
 </header>
 
 <main>
-<div class="hon">
-  <p class="tit">Title</p>
-  <% @books.each do |book| %>
-  <p><%= book.title %></p>
-  <% end %>
-</div>
+<section class="hon">
+  <div class="tit">Title</div>
 
-<div class="naiyou">
-  <p class="bod">Body</p>
   <% @books.each do |book| %>
-  <p><%= book.body %></p>
-</div>
+  <div class="namae"><%= book.title %></div>
   <% end %>
+</section>
+
+<section class="naiyou">
+  <div class="tit">Body</div>
+  <% @books.each do |book| %>
+  <div class="namae"><%= book.body %></div>
+  <% end %>
+</section>
+
 <div class="page">
 <% @books.each do |book| %>
-  <p><%= link_to "Show", book_path(book.id),method: :get %> <%= link_to "Edit", edit_book_path(book.id),method: :get %> <%= link_to "Delete", @book, method: :delete %></p>
+  <div class="namae"><%= link_to "Show", book_path(book.id),method: :get %> <%= link_to "Edit", edit_book_path(book.id),method: :get %> <%= link_to "Delete", @book, method: :delete %></div>
 <% end %>
 </div>
 
@@ -27,9 +29,9 @@
 <footer>
   <h3>New book</h3>
 <%= form_with model:@book, local:true do |f| %>
-  <p>Title</p>
+  <div>Title</div>
   <%= f.text_field :title %>
-  <p>Body</p>
+  <div>Body</div>
   <%= f.text_area :body %><br>
   <%= f.submit"Create Book" %>
   <% end %>
