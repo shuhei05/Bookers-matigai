@@ -1,3 +1,5 @@
+<div class="notice"><%= notice %></div>
+
 <header>
 <h2 class="books">Books</h2>
 </header>
@@ -19,20 +21,28 @@
 </section>
 
 <div class="page">
+  <div class="box"></div>
 <% @books.each do |book| %>
-  <div class="namae"><%= link_to "Show", book_path(book.id),method: :get %> <%= link_to "Edit", edit_book_path(book.id),method: :get %> <%= link_to "Delete", @book, method: :delete %></div>
+  <div class="namae">
+    <div class="links">
+    <div class="link"><%= link_to "Show", book_path(book.id),method: :get %></div>
+    <div class="link"><%= link_to "Edit", edit_book_path(book.id),method: :get %></div>
+    <div class="link"><%= link_to "Delete", book_path(book.id),method: :delete,"data-confirm" =>"Are you sure?" %></div>
+    </div>
+    </div>
+
 <% end %>
 </div>
 
 </main>
 
 <footer>
-  <h3>New book</h3>
+  <h3 class="books">New book</h3>
 <%= form_with model:@book, local:true do |f| %>
   <div>Title</div>
-  <%= f.text_field :title %>
+  <div class="text"><%= f.text_field :title %></div>
   <div>Body</div>
-  <%= f.text_area :body %><br>
-  <%= f.submit"Create Book" %>
+  <div class="text"><%= f.text_area :body %></div>
+  <div><%= f.submit"Create Book" %></div>
   <% end %>
 </footer>

@@ -1,5 +1,7 @@
-<p>Title:<%= @book.title %></p>
+<div class="noti"><%= notice %></div>
 
-<p>Body:<%= @book.body %></p>
+<div class="sho"><span>Title:</span> <%= @book.title %></div>
 
-<%= link_to "Edit", edit_book_path(@book.id),method: :get %> | <%= link_to "Back", books_path %>
+<div class="sho"><span>Body:</span> <%= @book.body %></div>
+
+<div class="henkou"><%= link_to "Edit", edit_book_path(@book.id),method: :get %> | <%= link_to "Back", books_path %></div>
