@@ -24,11 +24,11 @@
   <div class="box"></div>
 <% @books.each do |book| %>
   <div class="namae">
-    <div class="links">
+
     <div class="link"><%= link_to "Show", book_path(book.id),method: :get %></div>
     <div class="link"><%= link_to "Edit", edit_book_path(book.id),method: :get %></div>
     <div class="link"><%= link_to "Delete", book_path(book.id),method: :delete,"data-confirm" =>"Are you sure?" %></div>
-    </div>
+
     </div>
 
 <% end %>
@@ -39,6 +39,13 @@
 <footer>
   <h3 class="books">New book</h3>
 <%= form_with model:@book, local:true do |f| %>
+<% if @book.errors.any? %>
+        <ul>
+            <% @book.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+    <% end %>
   <div>Title</div>
   <div class="text"><%= f.text_field :title %></div>
   <div>Body</div>
